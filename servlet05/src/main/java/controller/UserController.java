@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import command.Command;
 import command.UserAllCommand;
 import command.UserCommand;
+import command.UserinfoCommand;
 
 
 @WebServlet("*.ju")
@@ -45,6 +46,9 @@ public class UserController extends HttpServlet {
 			view = "user_all.jsp";
 		}else if(uri.equals("/info.ju")) {
 			//비즈니스 로직
+			Command command= new UserinfoCommand();
+			command.execute(request, response);
+			
 			
 			//응답화면 연결
 			view ="user_info.jsp";

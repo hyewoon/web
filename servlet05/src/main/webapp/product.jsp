@@ -16,8 +16,8 @@
 <c:forEach items ='${list}' var ='dto'>
 
 <tr>
-<td>${dto.num}</td>
-<td>${dto.name}</td>
+<td><a href ='product_info.pd?num=${dto.num}'>${dto.num}</a></td>
+<td><a href ='product_name.pd?name=${dto.name}'>${dto.name}</a></td>
 <td>${dto.company}</td>
 <td>${dto.price}</td>
 <td>${dto.qty}</td>

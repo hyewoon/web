@@ -7,6 +7,10 @@
 
 	<mapper namespace ="user">
 	
+		<select id = 'user_info' resultType = 'dto.UserDTO'>
+		select * from tbl_java_user where id =#{id}
+		</select>
+	
 		<select id ='user_list'  resultType ='dto.UserDTO'>
 		
 		select * from tbl_java_user

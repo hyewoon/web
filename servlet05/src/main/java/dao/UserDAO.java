@@ -11,6 +11,12 @@ import mybatis.MybatisFactory;
 public class UserDAO {
 	private SqlSession sql;
 	
+	public UserDTO select_user_info(String id) {
+		connect();
+		 UserDTO dto= sql.selectOne("user.user_info", id);
+		 return dto;
+	}
+	
 	public List<UserDTO> select_user_list() {
 		connect();
 		 List<UserDTO> list = sql.selectList("user.user_list");
