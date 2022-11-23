@@ -1,0 +1,14 @@
+package command;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class UserAllCommand implements Command {
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		//db에서 전체사용자이름을  죄회해 온다
+
+	}
+
+}

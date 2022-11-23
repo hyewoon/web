@@ -1,0 +1,74 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix= "c" uri ="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib uri ="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>    
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div> <a href = '<c:url value="/" />' >홈으로</a>  </div>
+<hr>
+<h3>함수라이브러리</h3>
+<c:set var='title' value= '   함수 라이브러리 FUNCTIONS'/>
+<h4>[${title}]</h4>
+여기에   공백을   아무리 많이   줘도 한 개만표현됨
+
+<ul>
+	<li> 문자열의 길이 :${fn:length(title) }</li>
+	<li> 문자열의 입부 :${fn: substring(title, 6, 11) }]</li>
+	<!--세번쨔 파라미터 생략 불가  -->
+	<li> 공백제거하기 : [${fn: trim(title)}]</li>
+</ul>
+
+<c:set var ='email' value ='hong2022@naver.com'/>
+<c:set var = 'contect' value ='abcd@daum.net'/>
+
+<h4>[${email}]</h4>
+<h4>[${contect}]</h4>
+
+
+
+<ul>
+	<li>특정문자열의 위치 :  ${fn: indexOf(email, '@') }</li>
+	<li>특정문자열의 위치 :  ${fn: indexOf(email, '.') }</li>
+	<li>전체문자열의 길이 : ${fn: length(email)} </li>
+	<!--이메일주소에서 아이디만 출력하기  -->
+	<li>이메일아이디 : ${fn:substring(email, 0 ,8) }</li>
+	<li>이메일아이디 : ${fn:substring(email, 0 , fn:indexOf(email, '@'))}</li>
+	<li>이메일아이디 : ${fn:substring(contect, 0 , fn:indexOf(contect, '@'))}</li>
+	<!--naver 문자열 뽑기
+	<!--호스트만 출력하기-->
+	<li>이메일 호스트 :${fn:substring(email, fn:indexOf(email, '@')+1 , fn:indexOf(email, '.') ) }</li>
+	<li>이메일 호스트 : ${fn:substring(email, fn:indexOf(email, '@')+1, fn:length(email) ) }</li>
+	<li>문자열변경(com -->co.kr) : ${fn:replace(email,'com', 'co.kr' ) }</li> 
+	<!--실제 데이터가 변경된 것은 아니고 출력상에서만 변경  -->
+	<li>문자열 변경(o --> e ): ${fn:replace(email, 'o', 'e') }</li>
+	<li>대문자화:${fn:toUpperCase(email) } </li>
+	<li>소문자화: ${fn:toLowerCase(title) }</li>
+	<li>존재유무: ${fn:contains(email, s'co.kr') }</li>
+	<li>존재유무: <c:if test = "${fn:contains(email, 'co.kr') }">
+					co.kr 있음
+				</c:if>
+				<c:if test ="${not fn:contains(email, 'com') }" >
+					com 없음
+				</c:if>
+	
+	</li>
+	<%
+	String[] fruits = {"귤", "배", "감"};
+	
+	%>
+	<c:set var= 'fruits' value = '<%= fruits%>'/>
+	<h4>문자연결 및 분리</h4>
+	
+</ul>
+
+
+
+
+</body>
+</html>

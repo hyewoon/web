@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+pageContext.setAttribute("pageData", 100);
+request.setAttribute("requestData", 200);
+session.setAttribute("sessionData", 300);
+
+pageContext.setAttribute("data", 100);
+
+%>
+
+<!-- 앞으로는 <%=%> 대신에 el사용해서 담긴 데이터 가져온다 -->
+<div>page값 : <%=pageContext.getAttribute("pageData") %>, ${pageData}</div>
+<div>request값 : <%=request.getAttribute("requestData") %>, ${requestData}</div>
+<div>session값 : <%=session.getAttribute("sessionData") %>, ${sessionData}</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+1.스크립트릿scriptlet : <% -- 자바코드 작성 -- %>
+	jsp에서 service메소드 내에 들어가는 명령문
+
+2.표현식expression tag: <%= %>
+	데이터 출력 : 변수값, 리턴하는 메소드의 리턴값
+	service메소드 내에서 확인가능
+	
+경로	
+D:\Study_Web\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\work\Catalina\localhost\jsp\org\apache\jsp	
+		
+
+3. 선언declaration tag : <%! %>
+	필드(멤버변수),메소드 선언하는 부분
+	jsp클래스 내에 들어가는 부분
+	
+4. 지시어 : <%@ %>
+		-page 지시어
+			현재 jsp 페이지에 적용할 속성을 지정 
+			import 속성으로 자바에서의 클래스import선언문을 지정
+			-->index.html에서 날짜,포멧 import지정
+			 <%@ page %>
+			 <%@ page import="java.util.Date, java.text.*" %>
+			 
+    	-include 지시어
+    		매 페이지마다 공통적인 부분을 별도 페이지로 만들고
+    		별도 페이지를 매 페이지에 포함시킨다 - 유지보수가 용이
+    		include(포함하다)정적페이지로 include 지시어가 선언된 페이지는 컴파일되지 않는다
+    		-->파일찾을 수 없다
+    		-->index가 적용된 페이지에서만 구현됨
+    		-->include 폴터 내 today.jsp 
+    		<%@ include %>
+    		<%@ include file ="include/today.jsp"%>
+    		<%@ include file='include/footer.jsp' %>
+    		
+    	-taglib 지시어	
+    		추가적인 library를 설치해야 한다.
+    		:jstl(Jsp Standard Tag Library)
+
+			<%@ taglib uri ='' prefix='' %>
+			
+5.주석 : ctrl+shift +/, ctrl+shift+c 
+	<!-- -->  :html 태그에 대한 주석 
+				: <!-- <p></p>--> 
+	<%-- -->  :jsp 태그에 대한 주석  
+				: <%-- <%@ include file ="include/today.jsp"%> --%>
+	/**/, // : java코드에 해당하는 스크립트릿, 선언에 있는 코드 주석 
+	주석 해제  : 블럭 지정 후 Ctrl + Shift + \
+
+jsp 내장객체	
+jsp 파일이 서블릿으로 변환될 때 자동생성되는 객체.
+service 메소드에 선언된 변수에 해당한다.
+스크립트릿과 표현식에서 사용된다
+주로 사용되는 내장객체 : request, response, session, out
+	1.	out : 출력과 관련된 내장객체 변수
+	
+	2.	request : 
+		서블릿의 doGest, doPost, service 메소드의 파라미터와 동일한 변수
+		요청시의 필요한 정보를 담고 있다.
+	-->회원가입(join, info)
+	
+	3.response : 
+		서블릿의 서블릿의 doGest, doPost, service 메소드의 파라미터와 동일한 변수
+		응답에 필요한 정보를 담고 있다.
+	-->회원가입(info)
+	
+	4.session : 
+		어플리케이션에 처음 접속시 세션이 만들어지고,
+		브라우저를 모두 닫으면 세션이 끊긴다.
+		여러 페이지마다 확인해야 하는 정보가 있다면 session scope에 담는다
+		scope에 담는 값은 attribute로 담는다
+		:setAttribute(속성명, 값);
+		속성명은 변수와 같다 
+		-->scope에 저장된 데이터를 확인
+		:getAttribute(속성명);
+		실제 저장한 값의 데이터타입으로  형변환(cast)해서 변수에 담는다
+	--> 회원가입(login)
+		
+		
+[실습]		
+1. 계산기화면 : calculate.jsp 를 만든다
+   두 숫자 입력, 연산자 선택해서
+   계산하기 버튼을 클릭 시 form태그를 submit 한다
+   :요청은 calculate_result.jsp
+2.	계산결과화면 : calculate_result.jsp 만든다
+	두 숫자, 연산자에 대한 계산 결과를 출력한다.
+3.	(추가)calculate_result.jsp에서 화면을 홈으로 forward 한다.
+ 	홈화면(index.jsp)에서 
+ 	연산 결과를 출력한다 : 예)계산 결과 : 10 + 20 = 30  
+ 	
+
+JSP 표준 액션태그
+1. include 액션 :<jsp:include page=''   /> 동적이다--> 변경사항이 자주 발생한다(컴파일됨 따로 자바파일있음)
+				<jsp:include page='' > </jsp : include> 정적이다
+	cf) include 지시어 : <%@ include file =''%> 	
+	
+	
+2.자바빈(JavaBean):
+jsp에서 데이터를 저장하고, 관리하기 위한 클래스에 해당	: DTO
+자바빈 내부데이터는 setter메소드와 getter메소드를 사용
+setProperty 액션 :setter메소드
+getProperty 액션 : getter메소드
+Property = 필드
+useBean 액션 : 새로운 자바빈(DTO)객체를 생성하거나 기존에 존재하는 자비빈 객체의 접근에 사용
+		
+데이터출력 : 표현식<% = %>		
+-->EL(Expression Language): ${}
+		
+		
+		
+			

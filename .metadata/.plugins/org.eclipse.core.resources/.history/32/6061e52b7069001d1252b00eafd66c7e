@@ -1,0 +1,12 @@
+package mybatis;
+
+import org.apache.ibatis.session.SqlSessionFactory;
+
+public class MybatisFactory {
+	private static SqlSessionFactory factory;
+	
+	public static SqlSessionFactory getInstance() {
+		
+		return null;
+	}
+}

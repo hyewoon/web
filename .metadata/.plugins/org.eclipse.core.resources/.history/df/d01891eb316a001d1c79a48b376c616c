@@ -1,0 +1,31 @@
+package dao;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import mybatis.MybatisFactory;
+
+public class UserDAO {
+	private SqlSession sql;
+	
+	//이름 조회해올 메소드 선언
+	public String select_name(){
+		connect();
+		String name = sql.selectOne("user.select_name");
+		return name;
+	}
+	
+	//money 조회해 올 메소드 선언
+	public int select_money() {
+		connect();
+		 int money = sql.selectOne("user_select_money");
+		 return money;
+	}
+	
+	//db연결
+	void connect() {
+		SqlSessionFactory factory = MybatisFactory.getInstance();
+		sql = factory.openSession( true );
+	}
+	
+}

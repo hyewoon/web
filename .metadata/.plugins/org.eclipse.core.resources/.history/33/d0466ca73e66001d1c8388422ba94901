@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div><a href ='../'>홈으로</a></div>
+<div><a href ='calculator.jsp'>계산기</a></div>
+<hr>
+<h3>비교연산자</h3>
+
+
+
+<h3>EL 산술연산</h3>
+<div>${param.num1} + ${param.num2} = ${param.num1 + param.num2}</div>
+<div>${param.num1} - ${param.num2} = ${param.num1 - param.num2}</div>
+<div>${param.num1} * ${param.num2} = ${param.num1 * param.num2}</div>
+<div>${param.num1} / ${param.num2} = ${param.num1 /param.num2 }</div>
+<div>${param.num1} / ${param.num2}
+					= ${param.num2 ==0 ? 0: param.num1 div param.num2}</div>
+<div>${param.num1} % ${param.num2} = ${param.num1 mod param.num2}</div>		 
+
+</body>
+</html>

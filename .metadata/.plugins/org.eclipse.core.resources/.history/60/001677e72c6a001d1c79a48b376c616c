@@ -1,0 +1,15 @@
+package dao;
+
+public class UserDAO {
+	
+	//이름 조회해올 메소드 선언
+	public String select_name(){
+		return "name";
+	}
+	
+	//money 조회해 올 메소드 선언
+	public int select_money() {
+		return 0;
+	}
+	
+}

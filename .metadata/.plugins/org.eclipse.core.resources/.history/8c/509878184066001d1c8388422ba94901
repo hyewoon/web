@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div><a href ='../'>홈으로</a></div>
+<div><a href ='calculator.jsp'>계산기</a></div>
+<hr>
+<h3>EL 비교연산자</h3>
+<div>${param.num1 }와 ${param.num2 } 중 더 큰수는? </div>
+<div> 두 가지 형식으로 비교연산 가능하다</div>
+<div>	${param.num1 gt (param.num2-0) ? param.num1 : param.num2}</div> 
+<div>	${param.num1 - param.num2 gt 0 ? param.num1 : param.num2}</div> 
+<!--파라미터로 보내진 데이터는 문자열이라서 2와 10비교하면 2가 더 크다 나온다  
+	하지만, 산술연산자가 있으면 내부적으로 숫자라고 생각해서 연산
+-->
+
+
+
+
+
+<hr>
+<h3>EL 산술연산</h3>
+<div>${param.num1} + ${param.num2} = ${param.num1 + param.num2}</div>
+<div>${param.num1} - ${param.num2} = ${param.num1 - param.num2}</div>
+<div>${param.num1} * ${param.num2} = ${param.num1 * param.num2}</div>
+<div>${param.num1} / ${param.num2} = ${param.num1 /param.num2 }</div>
+<div>${param.num1} / ${param.num2}
+					= ${param.num2 ==0 ? 0: param.num1 div param.num2}</div>
+<div>${param.num1} % ${param.num2} = ${param.num1 mod param.num2}</div>		 
+
+</body>
+</html>

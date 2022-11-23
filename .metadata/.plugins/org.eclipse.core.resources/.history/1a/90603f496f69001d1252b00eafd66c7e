@@ -1,0 +1,67 @@
+package dao;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Date;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+public class TestDAO {
+	
+	
+	void connect() {
+		SqlSession session;
+		String resource = "mybatis/config.xml";
+		InputStream inputStream;
+			try {
+				Resources.getResourceAsStream(resource);
+				SqlSessionFactory sqlSessionFactory 
+				= new SqlSessionFactoryBuilder().build(inputStream);
+				 session = sqlSessionFactory.openSession();
+				
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
+	}
+	/*
+	 * private Connection conn; private PreparedStatement ps; private ResultSet rs;
+	 * 
+	 */
+
+	public Date select_today() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	/*
+	 * //오늘 날짜를 조회하는 메소드 public Date select_today() { Date today = null;
+	 * 
+	 * connect();
+	 * 
+	 * String sql = "select sysdate from dual";
+	 * 
+	 * try { ps = conn.prepareStatement(sql); rs = ps.executeQuery(); rs.next();
+	 * today = rs.getDate("sysdate");
+	 * 
+	 * } catch(Exception e) { System.out.println(e.getMessage()); }finally {
+	 * disconnect(); } return today; }
+	 * 
+	 * void connect() {
+	 * 
+	 * try { Context context = new InitialContext(); DataSource ds =
+	 * (DataSource)context.lookup("java:comp/env/smart"); conn = ds.getConnection();
+	 * 
+	 * } catch (Exception e) { System.out.println(e.getMessage()); }
+	 * 
+	 * }
+	 * 
+	 * void disconnect() { if (rs !=null) {try {rs.close(); }catch(Exception e) {}}
+	 * if (ps !=null) {try {rs.close(); }catch(Exception e) {}} if (conn !=null)
+	 * {try {rs.close(); }catch(Exception e) {}} }
+	 */
+}
+

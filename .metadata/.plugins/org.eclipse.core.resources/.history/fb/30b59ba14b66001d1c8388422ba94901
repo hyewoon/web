@@ -1,0 +1,60 @@
+JSP 표준 액션태그
+1. include 액션 :<jsp:include page=''   /> 동적이다--> 변경사항이 자주 발생한다(컴파일됨 따로 자바파일있음)
+				<jsp:include page='' > </jsp : include> 정적이다
+	cf) include 지시어 : <%@ include file =''%> 	
+	
+	
+2.자바빈(JavaBean):
+jsp에서 데이터를 저장하고, 관리하기 위한 클래스에 해당	: DTO
+자바빈 내부데이터는 setter메소드와 getter메소드를 사용
+setProperty 액션 :setter메소드
+getProperty 액션 : getter메소드
+Property = 필드
+useBean 액션 : 새로운 자바빈(DTO)객체를 생성하거나 기존에 존재하는 자비빈 객체의 접근에 사용
+		
+데이터출력 : 표현식<% = %>		
+-->EL(Expression Language): ${}
+
+모든 속성(attribute)을 출력하는데 사용한다 
+:page scope< request scope < session scope < application scope 
+
+attribute 로 저장(set)한 값이 있으면 ${속성명} 출력
+parameter를 출력 : ${param.파라미터명}
+배열 parameter 를 출력 ${paramValues.파라미터명[]}
+
+
+=========================================================
+EL 표현식
+연산자
+1. 산술연산자 : +, -, *, /(div: 몫) , %(Mod :나머지)
+2. 비교연산자 : ==(eq), !=(ne), >(gt), <(lt), >=(ge), <=(le)
+3. 논리연산자 : &&(and), ||(or), !(not), empty 
+
+------------------------------------------------------------
+EL 
+[인덱스]: 배열, 자료구조(ArrayList) 출력
+[키]: 자료구조(HashMap)
+
+
+==========================================================
+JSTL()설치 
+el에서는 조건문 반복문 사용할 수 없다 --> jspl 사용 (설치) 
+tomcat.apach.org
+좌측메뉴 : taglibs
+jar파일 4개 다 받기
+web-inf에서 lib에 4개 다 저장
+
+------------------------------------------------------------
+JSTL(JSP Standard Tag Library)
+1.코어 라이브러리
+<%@ taglib uri ="http:">
+변수선언문, 조건문, 반복문 등...
+
+변수선언문<c:set var='변수명' value= "값"></c:set>
+		<c:set/>
+
+변수 선언:
+변수 삭제:<c:remove var="변수명"/>
+
+		
+		

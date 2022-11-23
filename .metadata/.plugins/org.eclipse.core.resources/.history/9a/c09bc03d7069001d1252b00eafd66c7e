@@ -1,0 +1,24 @@
+package mybatis;
+
+import org.apache.ibatis.session.SqlSessionFactory;
+
+public class MybatisFactory {
+	private static SqlSessionFactory factory;
+	
+	public static SqlSessionFactory getInstance() {
+		
+			String resource = "mybatis/config.xml";
+			InputStream inputStream;
+				try {
+					Resources.getResourceAsStream(resource);
+					factory 
+					= new SqlSessionFactoryBuilder().build(inputStream);
+					 session = sqlSessionFactory.openSession( true );
+					
+				} catch (IOException e) {
+					System.out.println(e.getMessage());
+				}
+		
+		return null;
+	}
+}

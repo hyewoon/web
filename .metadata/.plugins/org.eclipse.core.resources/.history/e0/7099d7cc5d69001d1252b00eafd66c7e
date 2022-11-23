@@ -1,0 +1,128 @@
+JSP 표준 액션태그
+1. include 액션 :<jsp:include page=''   /> 동적이다--> 변경사항이 자주 발생한다(컴파일됨 따로 자바파일있음)
+				<jsp:include page='' > </jsp : include> 정적이다
+	cf) include 지시어 : <%@ include file =''%> 	
+	
+	
+2.자바빈(JavaBean):
+jsp에서 데이터를 저장하고, 관리하기 위한 클래스에 해당	: DTO
+자바빈 내부데이터는 setter메소드와 getter메소드를 사용
+setProperty 액션 :setter메소드
+getProperty 액션 : getter메소드
+Property = 필드
+useBean 액션 : 새로운 자바빈(DTO)객체를 생성하거나 기존에 존재하는 자비빈 객체의 접근에 사용
+		
+데이터출력 : 표현식<% = %>		
+-->EL(Expression Language): ${}
+
+모든 속성(attribute)을 출력하는데 사용한다 
+:page scope< request scope < session scope < application scope 
+
+attribute 로 저장(set)한 값이 있으면 ${속성명} 출력
+parameter를 출력 : ${param.파라미터명}
+배열 parameter 를 출력 ${paramValues.파라미터명[]}
+
+
+=========================================================
+EL 표현식
+연산자
+1. 산술연산자 : +, -, *, /(div: 몫) , %(Mod :나머지)
+2. 비교연산자 : ==(eq), !=(ne), >(gt), <(lt), >=(ge), <=(le)
+3. 논리연산자 : &&(and), ||(or), !(not), empty 
+
+------------------------------------------------------------
+EL 
+[인덱스]: 배열, 자료구조(ArrayList) 출력
+[키]: 자료구조(HashMap)
+
+
+==========================================================
+JSTL()설치 
+el에서는 조건문 반복문 사용할 수 없다 --> jspl 사용 (설치) 
+tomcat.apach.org
+좌측메뉴 : taglibs
+jar파일 4개 다 받기
+web-inf에서 lib에 4개 다 저장
+
+------------------------------------------------------------
+JSTL(JSP Standard Tag Library)
+1.코어 라이브러리
+<%@ taglib uri ="http:">
+변수선언문, 조건문, 반복문 등...
+
+1-1)변수선언문<c:set var='변수명' value= "값"></c:set>
+		<c:set/>
+
+변수 선언:
+1-2)변수 삭제:<c:remove var="변수명"/>
+
+2. 조건문 : if,choose문
+	2-1: if문 :<c:if test='조건식'></c:if>
+	no1이 no2보다 더 큰가 :이게  참이면 no1 출력
+	<c:if test = '${(no1-0) gt no2}'>${no1}</c:if>
+	if(조건식){
+	}
+	2-2: choose문 like 스위치문: if else형태 : <c:choose>
+					<c:when test='조건식1'></c:when>
+					<c:when test='조건식2'></c:when>
+					<c:when test='조건식3'></c:when>
+				 </c:choose>
+	
+3. 반복문	
+	for(int no =1; no<= 10; no++){
+	
+	}
+	for(변수 선언 : 배열변수){
+	
+	}	
+	기본for문 <c:forEach var='변수명' begin='시작값' end ='끝값' step ='증감치'>
+			</c:forEach>
+	향상된 for문 <c:forEach items='배열변수명' var='변수명'>		
+	
+			
+4)토큰 분리
+ String alpha = "A, B, C / D";
+ String data []= alpha.split(",");		
+ StringTokenizer token = new StringTokenizer("/ ,");	
+ 
+ //실제로는 토큰이 몇개 있는지 모르니까 반복문 사용
+ while(token.hansMoreTokens()){
+ 
+  token.nextToken();
+ }
+
+ <c:forTokens items = '문자열' delims ="/ , ?" var ='분리된토큰을 담을 변수'>
+ ${분리된토큰을 담을 변수}
+</>			
+			
+5) 페이지이동, 링크걸기: <c:url value ='요청url'/> //절대 경로
+			
+2. 문자열에 대한 함수라이브러리		
+<%@ taglib uri= "http://java.sum.com/jsp/jstl/functions" prefix="fn" %>
+
+1)문자열의 길이 : ${fn: length(데이터)}
+2)문자열의 일부 : ${fn: substring(데이터, 시작, 끝위치) }
+3)문자열의 공백제거 : ${fn:trim(데이터)}
+4)특정문자열의 시작위치 : ${fn;indexOf(데이터, 대상문자열)}
+5)문자열에서 특정문자열을 다른문자열로 바꾸기 : ${fn: replace(데이터,특정문자열, 다른문자열)}
+6)대/소문자화 : ${fn : toUpperCase/toLowerCase(데이터)}	
+7)특정문자열이 포함되어 있는지 확인 : ${fn: contains(데이터, 특정문자열)}
+8)배열변수를 하나의 문자열로 만들기 : ${fn: join(데이터, 연결문자열)}
+9)문자분리 : ${fn: split(데이터, 구분자)}
+
+3.포맷 라이브러리
+<%@ taglib uri = "http:// java.sun.com/jsp/jstl">
+
+날짜 포맷 기본 : 2022. 11.08
+날짜 표현 방식 : dateStyle : medium(기본), full, long, short
+사용자가 지정형식 : pattern="형식"
+
+
+숫자포맷:
+groupingUsed = true 기본 -천 단위,포맷
+사용자지정형식 : pattern = "000000" 
+사용자지정형식 : pattern = "###,###,###.##" 12345.123  --> 12,345.12 
+실제 데이터가 있는 만큼만 표현 
+
+
+

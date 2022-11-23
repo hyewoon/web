@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;servlet04/src/main/webapp/operator/calculate_result.jsp&apos; to &apos;calculator_result.jsp&apos;" description="Rename resource &apos;calculate_result.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/operator/calculate_result.jsp" name="calculator_result.jsp" stamp="1668664278336" updateReferences="true"/>
+</session>

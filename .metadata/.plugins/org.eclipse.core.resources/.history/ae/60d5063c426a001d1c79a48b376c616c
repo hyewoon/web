@@ -1,0 +1,20 @@
+package dao;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import mybatis.MybatisFactory;
+
+public class ProductDAO {
+	private SqlSession sql;
+	
+	
+	public void select_product_list() {
+		
+	}
+	
+	void connect() {
+		SqlSessionFactory factory = MybatisFactory.getInstance();
+		sql = factory.openSession( true );
+	}
+}

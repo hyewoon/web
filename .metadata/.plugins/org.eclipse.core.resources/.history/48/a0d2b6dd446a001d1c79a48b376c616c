@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h3>상품목록 출력</h3>
+
+<table border ='1'>
+<tr> <th>아이디</th><th>이름</th><th>이메일</th><th>관리자</th><th>money</th></tr>
+
+<c:forEach items ='${product_list}' var ='dto'>
+
+<tr>
+<td>${dto.id}</td>
+<td>${dto.name}</td>
+<td>${dto.email}</td>
+<td>${dto.admin}</td>
+<td>${dto.money}</td>
+
+</c:forEach>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<mapper namespace ="user">
+<select id ='select_name' resultType ='String'>
+	select name from tbl_java_user
+</select>
+
+<select id='select_money' resultType ='integer'>
+
+
+</select>
+
+
+
+
+</mapper>

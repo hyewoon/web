@@ -1,0 +1,50 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+pageContext.setAttribute("pageData", 100);
+request.setAttribute("requestData", 200);
+session.setAttribute("sessionData", 300);
+
+pageContext.setAttribute("data", 100);
+request.setAttribute("data", 200);
+session.setAttribute("data", 300);
+
+%>
+
+<!-- 앞으로는 대신에 el사용해서 담긴 데이터 가져온다 -->
+<div>page값 : <%=pageContext.getAttribute("pageData") %>, ${pageData}</div>
+<div>request값 : <%=request.getAttribute("requestData") %>, ${requestData}</div>
+<div>session값 : <%=session.getAttribute("sessionData") %>, ${sessionData}</div>
+<div>값 : ${requestScope.data}</div>
+
+<!-- 이름이 같다면 어디에 값 먼저 가져오는가 ?
+여기서는 pageContext먼저 찾아가서 찾는다
+정확히 지정해주면 원하는 값 찾는다
+로직 : 페이지영역 먼저 찾아보고, 리퀘스트, 세선 순으로 찾아보기
+page scope< request scope < session scope < application scope 
+ -->
+ 
+ <%
+ RequestDispatcher rd= request.getRequestDispatcher("scope_result.jsp");
+ rd.forward(request, response);
+ 
+ request.getRequestDispatcher("scope_result.jsp")
+ .forward(request, response);
+ %>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+</body>
+</html>
